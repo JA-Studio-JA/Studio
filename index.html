@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JA Studio | Pulmakutsed ja pulmakodulehed</title>
+  <meta name="description" content="JA Studio loob pulmakutsed, pulmakodulehed ja pulmade visuaalsed kujundused vastavalt teie armastuse aastaajale.">
+  <style>
+    :root{
+      --bg:#f8f2ea;--soft:#fbf7f1;--paper:#fffaf4;--text:#382f2a;--muted:#77675e;
+      --accent:#9b7c68;--line:rgba(56,47,42,.14);--spring:#dfe9d7;--summer:#f1dfb8;
+      --autumn:#dcc0a1;--winter:#dbe4e8;--shadow:0 24px 70px rgba(70,47,33,.12);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+    a{text-decoration:none;color:inherit}
+    p{margin:0}
+    .container{width:min(1160px,calc(100% - 40px));margin:0 auto}
+    h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.04em;margin:0}
+    h1{font-size:clamp(48px,7vw,92px);line-height:.95;max-width:780px}
+    h2{font-size:clamp(36px,5vw,64px);line-height:1}
+    h3{font-size:30px;line-height:1.12}
+    .kicker{margin:0 0 14px;color:var(--accent);font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+    header{position:sticky;top:0;z-index:20;background:rgba(248,242,234,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;font-family:Georgia,"Times New Roman",serif;font-size:26px;letter-spacing:-.04em}
+    .mark{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line);box-shadow:0 10px 30px rgba(70,47,33,.06);font-size:19px}
+    .brand small{display:block;margin-top:2px;font-family:Arial,Helvetica,sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}
+    nav{display:flex;align-items:center;gap:24px;font-size:14px;color:var(--muted)}
+    nav a:hover{color:var(--text)}
+    .nav-cta{padding:10px 16px;border-radius:999px;background:var(--text);color:white;font-weight:700}
+    .hero{padding:92px 0 86px;background:radial-gradient(circle at 12% 14%,rgba(223,233,215,.92),transparent 28%),radial-gradient(circle at 92% 12%,rgba(219,228,232,.88),transparent 30%),linear-gradient(135deg,#f8f2ea,#f2e4d4)}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(340px,.76fr);gap:54px;align-items:center}
+    .lead{margin-top:28px;max-width:660px;font-size:clamp(18px,2vw,22px);line-height:1.65;color:var(--muted)}
+    .buttons{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+    .btn{display:inline-flex;min-height:48px;align-items:center;justify-content:center;padding:13px 22px;border-radius:999px;font-size:14px;font-weight:700;border:1px solid var(--line)}
+    .primary{background:var(--text);color:white;border-color:var(--text);box-shadow:0 16px 35px rgba(56,47,42,.18)}
+    .secondary{background:rgba(255,255,255,.55)}
+    .note{margin-top:22px;color:var(--muted);font-size:14px}
+    .mockup-wrap{padding:22px;border-radius:34px;background:rgba(255,250,244,.74);border:1px solid var(--line);box-shadow:var(--shadow)}
+    .mockup{min-height:540px;border-radius:28px;padding:28px;background:linear-gradient(rgba(255,255,255,.42),rgba(255,255,255,.42)),radial-gradient(circle at 35% 20%,rgba(223,233,215,.96),transparent 22%),radial-gradient(circle at 72% 42%,rgba(241,223,184,.84),transparent 28%),radial-gradient(circle at 30% 75%,rgba(220,192,161,.82),transparent 28%),#f9f3eb;display:flex;flex-direction:column;justify-content:space-between;text-align:center;border:1px solid var(--line)}
+    .mockup-top{display:flex;justify-content:space-between;color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.18em}
+    .mockup-main span{display:block;margin-bottom:16px;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+    .mockup-main strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:58px;line-height:.95;font-weight:400}
+    .mockup-main em{display:block;margin-top:18px;font-family:Georgia,"Times New Roman",serif;font-size:24px;color:#6d5143}
+    .pills{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .pill{min-height:74px;border-radius:18px;display:grid;place-items:center;font-family:Georgia,"Times New Roman",serif;font-size:18px;border:1px solid var(--line)}
+    .spring{background:var(--spring)}.summer{background:var(--summer)}.autumn{background:var(--autumn)}.winter{background:var(--winter)}
+    .strip{padding:28px 0;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .strip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .strip-item{padding:22px;border-radius:22px;background:white;border:1px solid rgba(56,47,42,.08)}
+    .strip-item strong{display:block;margin-bottom:8px}.strip-item span{color:var(--muted);font-size:14px;line-height:1.55}
+    section{padding:96px 0}
+    .story{background:#f6f0e8;text-align:center}
+    .story-inner{max-width:920px;margin:0 auto}
+    .story-text{max-width:790px;margin:34px auto 0;font-size:18px;line-height:1.82;color:#4c4038}
+    .story-text p{margin-bottom:22px}.story-text p:first-child{font-size:21px;line-height:1.65;color:var(--text)}.story-text p:last-child{margin-top:34px;font-size:20px;color:var(--text)}
+    .collections,.process{background:var(--soft)}.services,.gallery{background:var(--bg)}.pricing,.contact{background:var(--paper)}
+    .head{max-width:760px;margin-bottom:44px}.head p{margin-top:18px;font-size:18px;line-height:1.7;color:var(--muted)}
+    .cards4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .season-card{min-height:410px;border-radius:34px;padding:24px;border:1px solid rgba(56,47,42,.1);position:relative;overflow:hidden}
+    .season-card:after{content:"";position:absolute;right:-45px;bottom:-70px;width:190px;height:190px;border-radius:50%;background:rgba(255,255,255,.36)}
+    .season-card>*{position:relative;z-index:1}.number{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(56,47,42,.55)}
+    .season-card h3{margin-top:22px;font-size:36px}.season-card p{margin-top:18px;color:rgba(56,47,42,.72);line-height:1.65;font-size:15px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}.tags span{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.44);border:1px solid rgba(56,47,42,.08);font-size:12px;color:rgba(56,47,42,.72)}
+    .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .service{padding:34px;border-radius:34px;background:rgba(255,250,244,.74);border:1px solid rgba(56,47,42,.1);box-shadow:0 18px 50px rgba(70,47,33,.06)}
+    .icon{width:54px;height:54px;border-radius:18px;background:#efe2d3;display:grid;place-items:center;margin-bottom:22px;font-family:Georgia,"Times New Roman",serif;font-size:24px;color:#6d5143}
+    .service p,.process-card p{margin-top:14px;color:var(--muted);line-height:1.7}.service ul{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:10px;color:var(--muted);font-size:15px}.service li:before{content:"— ";color:var(--accent)}
+    .price-box{border-radius:34px;background:var(--text);color:white;overflow:hidden;display:grid;grid-template-columns:.9fr 1.1fr;box-shadow:var(--shadow)}
+    .price-intro{padding:46px}.price-intro .kicker{color:#d9bfa7}.price-intro p{margin-top:18px;color:rgba(255,255,255,.72);line-height:1.7;font-size:17px}
+    .price-list{padding:28px;background:rgba(255,255,255,.06);display:grid;gap:12px}.price-item{padding:22px;border-radius:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:20px}.price-item span{display:block;margin-top:7px;color:rgba(255,255,255,.68);line-height:1.55;font-size:14px}.price-item em{white-space:nowrap;font-style:normal;font-weight:700}
+    .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:step}.process-card{counter-increment:step;padding:30px;border-radius:34px;background:white;border:1px solid rgba(56,47,42,.08)}.process-card:before{content:"0" counter(step);display:inline-flex;margin-bottom:30px;font-family:Georgia,"Times New Roman",serif;font-size:34px;color:var(--accent)}
+    .gallery-grid{display:grid;grid-template-columns:1.2fr .8fr 1fr;gap:18px;min-height:520px}.gallery-card{position:relative;border-radius:34px;overflow:hidden;border:1px solid rgba(56,47,42,.1);min-height:240px}.large{grid-row:span 2}.wide{grid-column:span 2}.g1{background:linear-gradient(135deg,#e7efdf,#f7e6d1)}.g2{background:linear-gradient(135deg,#f1dfb8,#f9f0d5)}.g3{background:linear-gradient(135deg,#dcc0a1,#efe2d3)}.g4{background:linear-gradient(135deg,#dbe4e8,#f8f2ea)}
+    .label{position:absolute;left:22px;right:22px;bottom:22px;padding:16px;border-radius:18px;background:rgba(255,250,244,.78);backdrop-filter:blur(12px)}.label strong{display:block;margin-bottom:5px}.label span{color:var(--muted);font-size:14px}
+    .contact{background:radial-gradient(circle at 12% 18%,rgba(223,233,215,.74),transparent 30%),radial-gradient(circle at 88% 12%,rgba(241,223,184,.62),transparent 28%),var(--paper)}
+    .contact-box{max-width:900px;margin:0 auto;text-align:center;padding:58px;border-radius:34px;background:rgba(255,250,244,.78);border:1px solid rgba(56,47,42,.1);box-shadow:var(--shadow)}
+    .contact-box p{max-width:650px;margin:22px auto 0;color:var(--muted);font-size:18px;line-height:1.7}.contact .buttons{justify-content:center}.email{margin-top:24px;display:inline-block;color:#6d5143;font-weight:700}
+    footer{padding:34px 0;background:var(--text);color:rgba(255,255,255,.72)}.footer-inner{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:14px}
+    @media(max-width:980px){.hero-grid,.price-box{grid-template-columns:1fr}.cards4{grid-template-columns:repeat(2,1fr)}.gallery-grid{grid-template-columns:1fr 1fr}.large,.wide{grid-column:auto;grid-row:auto}}
+    @media(max-width:760px){.container{width:min(100% - 28px,1160px)}.nav{min-height:auto;padding:14px 0}nav{display:none}.hero{padding:58px 0 54px}.mockup{min-height:430px}.mockup-main strong{font-size:44px}.pills{grid-template-columns:repeat(2,1fr)}.strip-grid,.grid2,.process-grid,.cards4,.gallery-grid{grid-template-columns:1fr}section{padding:68px 0}.story-text{font-size:16px;line-height:1.75}.story-text p:first-child,.story-text p:last-child{font-size:18px}.price-intro,.contact-box{padding:34px 24px}.price-item{display:block}.price-item em{display:inline-block;margin-top:14px}.footer-inner{display:grid}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand"><span class="mark">JA</span><span>JA Studio<small>pulmad & kujundus</small></span></a>
+      <nav>
+        <a href="#aastaajad">Aastaajad</a><a href="#kollektsioonid">Kollektsioonid</a><a href="#teenused">Teenused</a><a href="#hinnad">Hinnad</a><a href="#kontakt" class="nav-cta">Küsi pakkumist</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="kicker">Pulmakutsed, pulmakodulehed ja visuaalsed tervikud</p>
+          <h1>Igal armastusel on oma aastaaeg.</h1>
+          <p class="lead">JA Studio loob pulmakutsed, pulmakodulehed ja pulmade visuaalsed kujundused, mis peegeldavad teie loo meeleolu — kevade õrnusest talve ajatu elegantsini.</p>
+          <div class="buttons">
+            <a class="btn primary" href="mailto:hello-ja.studio@outlook.com?subject=Soovin%20JA%20Studio%20pakkumist">Küsi eritellimust</a>
+            <a class="btn secondary" href="#kollektsioonid">Vaata kollektsioone</a>
+          </div>
+          <p class="note">Valmiskujundused, personaalsed lahendused ja terviklik pulma visuaalne stiil.</p>
+        </div>
+        <div class="mockup-wrap">
+          <div class="mockup">
+            <div class="mockup-top"><span>JA Studio</span><span>2026</span></div>
+            <div class="mockup-main"><span>teie päev</span><strong>pulmakutse</strong><em>vastavalt teie armastuse aastaajale</em></div>
+            <div class="pills"><div class="pill spring">Kevad</div><div class="pill summer">Suvi</div><div class="pill autumn">Sügis</div><div class="pill winter">Talv</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="strip">
+      <div class="container strip-grid">
+        <div class="strip-item"><strong>Personaalsed kujundused</strong><span>Iga kutse ja kujundus sünnib teie loo, pulma stiili ja värvide järgi.</span></div>
+        <div class="strip-item"><strong>Pulmakodulehed</strong><span>Kaunis ja praktiline veebileht kogu olulise info, RSVP ja külaliste jaoks.</span></div>
+        <div class="strip-item"><strong>Ühtne visuaalne tervik</strong><span>Kutsed, menüüd, kohakaardid, lauanumbrid, sildid ja muu vajalik ühes stiilis.</span></div>
+      </div>
+    </section>
+
+    <section class="story" id="aastaajad">
+      <div class="container story-inner">
+        <p class="kicker">JA Studio lugu</p>
+        <h2>Igal armastusel on oma aastaaeg</h2>
+        <div class="story-text">
+          <p>Armastus ei ole kunagi ainult üks tunne. Ta muutub, kasvab ja küpseb koos ajaga — täpselt nagu aastaajad.</p>
+          <p>Kevades on esimene õrnus, värskus ja algus. See hetk, kus kõik alles tärkab ja maailm tundub korraga pehmem.</p>
+          <p>Suves on kirg, soojus ja küllus — armastus, mis õitseb täies jõus, on elav, valgusküllane ja lõkkav.</p>
+          <p>Sügises on sügavus, rahu ja küps ilu. See on armastus, mis on saanud tähenduse, muutunud soojaks, kindlaks ja päriseks.</p>
+          <p>Talves on vaikus, lähedus ja ajatuse tunne — armastus, mis hoiab, kannab ja jääb.</p>
+          <p>Just seetõttu on aastaajad JA Studios olulisel kohal. Iga paar, iga lugu ja iga pulm kannab endas oma aastaaega. Mõni armastus on helge ja õrn nagu kevadhommik, mõni soe ja külluslik nagu suveõhtu, mõni sügav ja elegantne nagu sügis ning mõni vaikne, puhas ja lummav nagu talv.</p>
+          <p>JA Studio eesmärk on luua kutsed ja kujundused, mis ei ole lihtsalt ilusad, vaid peegeldavad teie loo tunnet, aega ja atmosfääri.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="collections" id="kollektsioonid">
+      <div class="container">
+        <div class="head"><p class="kicker">Kollektsioonid</p><h2>Neli aastaaega, neli erinevat tunnet</h2><p>Valmiskollektsioonid annavad hea alguspunkti, aga iga kujundust saab kohandada vastavalt teie pulma värvidele, peokohale, lilledele ja üldisele atmosfäärile.</p></div>
+        <div class="cards4">
+          <article class="season-card spring"><span class="number">01 / Kevad</span><h3>Õrn algus</h3><p>Helged toonid, pehmed lilled, värskus ja romantiline kergus. Sobib paarile, kelle pulma tunne on õhuline, õrn ja lootusrikas.</p><div class="tags"><span>õrn</span><span>hele</span><span>värske</span></div></article>
+          <article class="season-card summer"><span class="number">02 / Suvi</span><h3>Lõõmav armastus</h3><p>Soojus, valgus, mereäärsed hetked, lopsakad lilled ja suveõhtute kuldne kuma. Sobib elavale ja rõõmsale pulmale.</p><div class="tags"><span>soe</span><span>lopsakas</span><span>valgusküllane</span></div></article>
+          <article class="season-card autumn"><span class="number">03 / Sügis</span><h3>Küps ilu</h3><p>Sügavad toonid, rahulik elegants ja tekstuurid, mis mõjuvad soojalt ning ajatult. Sobib küpsele, stiilsele ja detailirohkele peole.</p><div class="tags"><span>sügav</span><span>elegantne</span><span>soe</span></div></article>
+          <article class="season-card winter"><span class="number">04 / Talv</span><h3>Ajatu lähedus</h3><p>Puhas, vaikne ja lummav esteetika. Talvine kollektsioon sobib paarile, kes armastab minimalismi, valgust ja pidulikku rahu.</p><div class="tags"><span>puhas</span><span>lummav</span><span>ajatu</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="teenused">
+      <div class="container">
+        <div class="head"><p class="kicker">Teenused</p><h2>Üks kutse või kogu pulma visuaalne tervik</h2><p>Saate tellida ainult pulmakutse kujunduse või tervikliku lahenduse, kus kutse, pulmakoduleht ja pulmapäeva trükised moodustavad ühtse stiili.</p></div>
+        <div class="grid2">
+          <article class="service"><div class="icon">01</div><h3>Pulmakutsed</h3><p>Personaalsed digitaalsed või trükiks ettevalmistatud pulmakutsed, mis annavad külalistele esimese tunde teie pulmapäeva stiilist.</p><ul><li>valmiskujunduse kohandamine</li><li>täiesti personaalne kujundus</li><li>trükifailid ja digitaalsed failid</li></ul></article>
+          <article class="service"><div class="icon">02</div><h3>Pulmakoduleht</h3><p>Praktiline ja ilus veebileht, kuhu saab koondada kogu olulise info: ajakava, asukoht, majutus, RSVP, kingisoov ja muu vajalik.</p><ul><li>veebileht teie pulma stiilis</li><li>RSVP lingi või vormi lisamine</li><li>sobib hästi GitHub Pages lahendusena</li></ul></article>
+          <article class="service"><div class="icon">03</div><h3>Pulmatrükised</h3><p>Kujundused pulmapäevaks, et kogu visuaalne pool oleks läbimõeldud ja harmooniline esimesest kutsest viimase detailini.</p><ul><li>menüüd ja kohakaardid</li><li>lauanumbrid ja istumisplaanid</li><li>tervitussildid, ajakavad ja muud detailid</li></ul></article>
+          <article class="service"><div class="icon">04</div><h3>Eritellimused</h3><p>Kui teil on kindel visioon, inspiratsioonipildid või soov midagi täiesti teistsugust luua, saab kujunduse teha erilahendusena just teie loole.</p><ul><li>kujundus teie inspiratsiooni põhjal</li><li>värvipaleti ja stiili kokkupanek</li><li>eriformaadid ja erilahendused</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing" id="hinnad">
+      <div class="container">
+        <div class="price-box">
+          <div class="price-intro"><p class="kicker">Hinnad</p><h2>Hinnad algavad vastavalt kujunduse mahule</h2><p>Iga tellimus on veidi erinev, sest lõplik hind sõltub kujunduse keerukusest, failide arvust, trükiettevalmistusest, paberist ja kogusest.</p><p>Kui tellite suurema koguse, näiteks alates 50 kutsest, saab arvestada soodsama tükihinnaga.</p></div>
+          <div class="price-list">
+            <div class="price-item"><div><strong>Valmiskujunduse kohandamine</strong><span>Olemasoleva kollektsiooni põhjal: nimed, kuupäev, tekstid, värvid ja väikesed muudatused.</span></div><em>alates kokkuleppel</em></div>
+            <div class="price-item"><div><strong>Personaalne pulmakutse</strong><span>Kujundus nullist teie loo, peokoha, värvide ja inspiratsiooni põhjal.</span></div><em>küsi pakkumist</em></div>
+            <div class="price-item"><div><strong>Pulmakoduleht</strong><span>Veebileht olulise info, ajakava, asukoha, RSVP ja pulma visuaalse stiiliga.</span></div><em>küsi pakkumist</em></div>
+            <div class="price-item"><div><strong>Terviklik visuaalne pakett</strong><span>Kutse, veebileht ja pulmapäeva trükised ühes läbimõeldud stiilis.</span></div><em>parim tervikuna</em></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="container">
+        <div class="head"><p class="kicker">Kuidas tellida?</p><h2>Lihtne ja selge protsess</h2><p>Alustame teie ideest ning liigume samm-sammult kujunduseni, mis sobib teie päeva, loo ja atmosfääriga.</p></div>
+        <div class="process-grid">
+          <article class="process-card"><h3>Kirjutate oma soovist</h3><p>Saatke lühidalt, mida vajate: kutse, pulmakoduleht, trükised või kogu tervik. Lisada võib ka inspiratsioonipilte, värve ja pulma kuupäeva.</p></article>
+          <article class="process-card"><h3>Paneme stiili paika</h3><p>Vaatame üle hooaja, värvipaleti, üldise tunde ja vajalikud detailid. Seejärel valmib esmane suund või pakkumine.</p></article>
+          <article class="process-card"><h3>Viimistlen failid</h3><p>Teen vajalikud parandused, valmistan ette digitaalsed või trükifailid ning annan kaasa selged juhised edasiseks.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <div class="container">
+        <div class="head"><p class="kicker">Stiilinäited</p><h2>Õrn, elegantne ja teie looga seotud</h2><p>Siia saab hiljem lisada päris fotod valmis kutsetest, mockupidest, trükistest ja pulmakodulehtedest.</p></div>
+        <div class="gallery-grid">
+          <div class="gallery-card large g1"><div class="label"><strong>Kevadine kutsekollektsioon</strong><span>pehmed toonid, õrnad lilled ja romantiline algus</span></div></div>
+          <div class="gallery-card g2"><div class="label"><strong>Suvised detailid</strong><span>soe valgus, mereäärne tunne ja lopsakas armastus</span></div></div>
+          <div class="gallery-card g3"><div class="label"><strong>Sügisene elegants</strong><span>sügavad toonid ja küps ilu</span></div></div>
+          <div class="gallery-card wide g4"><div class="label"><strong>Pulmakoduleht</strong><span>kogu oluline info ühes ilusas ja praktilises kohas</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="kontakt">
+      <div class="container">
+        <div class="contact-box">
+          <p class="kicker">Kontakt</p>
+          <h2>Räägime teie pulma aastaajast</h2>
+          <p>Kirjutage, millist kujundust vajate, milline on teie pulma kuupäev, mitu kutset või trükist soovite ning milline tunne võiks teie päeval olla.</p>
+          <div class="buttons"><a class="btn primary" href="mailto:hello-ja.studio@outlook.com?subject=Soovin%20JA%20Studio%20pakkumist&body=Tere!%0A%0ASoovin%20uurida%20JA%20Studio%20kujunduse%20kohta.%0A%0APulma%20kuup%C3%A4ev:%0ASoovin:%20pulmakutse%20/%20pulmakoduleht%20/%20tr%C3%BCkised%20/%20tervikpakett%0AKogus:%0AStiil%20v%C3%B5i%20aastaaeg:%0A%0A">Küsi pakkumist</a><a class="btn secondary" href="#teenused">Vaata teenuseid</a></div>
+          <a class="email" href="mailto:hello-ja.studio@outlook.com">hello-ja.studio@outlook.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><span>© 2026 JA Studio. Kõik õigused kaitstud.</span><span>Pulmakutsed · Pulmakodulehed · Pulmade visuaalsed kujundused</span></div></footer>
+</body>
+</html>
